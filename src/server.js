@@ -6,7 +6,7 @@ import Room from "./data/schema.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-mongoose.connect("mongodb://localhost/doc_share");
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 const httpServer = createServer(app);
