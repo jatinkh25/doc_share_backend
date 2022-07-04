@@ -6,14 +6,14 @@ import Room from "./data/schema.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/doc_share");
 
 const app = express();
 const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -36,6 +36,8 @@ io.on("connection", (socket) => {
 });
 
 const defaultValue = "";
+
+//finds room for the user, if not present creates a new room
 const findOrCreateRoom = async (roomId) => {
   if (roomId == null) return;
 
