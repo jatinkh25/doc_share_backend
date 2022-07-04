@@ -10,7 +10,7 @@ Installs all the dependencies of the project in your local environment.
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
